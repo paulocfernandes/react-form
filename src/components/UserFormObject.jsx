@@ -2,11 +2,17 @@ import React, { useState } from 'react'
 import { Labelform } from './labelform'
 
 
-export const UserForm = (event) => {
+export const UserFormObject = (event) => {
 
-    const [nome, Setnome] = useState ('Paulo');
-    const [email, Setemail] = useState();
-    const [senha, Setsenha] = useState ();
+    const [user, SetUser] = useState ({
+      nome: '' ,
+      email: '',
+      senha: '',
+
+    });
+  
+    
+ 
    
     const submitForm = () => {
         event.preventDefault();
@@ -29,8 +35,8 @@ export const UserForm = (event) => {
             <input type="text"
              name='nome' id='nome' 
              className='form-control'
-             onChange={e => Setnome(e.target.value)}
-             value={nome}  
+             onChange={(e) => SetUser({... user,nome: e.target.value})}
+             value={user.nome}  
              />
             </div>
 
@@ -41,8 +47,9 @@ export const UserForm = (event) => {
              name='email' id='email'
               placeholder='Ex: nome@gmail.com'
                className='form-control'
-                value={email} 
-                onChange={e => Setemail(e.target.value)}/>
+               
+                onChange={(e) => SetUser({... user,email: e.target.value})}
+             value={user.email}  />
                
             </div>
 
@@ -51,8 +58,9 @@ export const UserForm = (event) => {
             <input type="text"
              name='senha' id='senha'
              className='form-control'  
-              valeu={senha}
-              onChange={e => Setsenha(e.target.value)} />
+            
+              onChange={(e) => SetUser({... user, senha: e.target.value})}
+             value={user.senha} />
            
             </div>
         
